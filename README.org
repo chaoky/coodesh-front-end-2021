@@ -1,0 +1,27 @@
+* Typed React Development Template
+#+BEGIN_SRC bash
+~ pnpm run dev
+#+END_SRC
+
+*** Main Packages
+- React
+- ESlint
+- TypeScript
+- Prettier
+- Husky (pre-commit hook)
+- Vite (webpack alternative)
+
+
+*** rather use ~npm~?
+
+#+BEGIN_SRC bash
+~ npm set-script preinstall "npx only-allow npm"
+#+END_SRC
+
+*** disable ~Husky~ pre-commit hook
+#+BEGIN_SRC bash
+~ npm uninstall husky
+#+END_SRC
+
+*** Emacs and Vim users
+This includes eslint support for the ~ts-ls~ language server :)
