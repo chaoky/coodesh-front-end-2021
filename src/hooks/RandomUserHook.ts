@@ -1,21 +1,40 @@
 import { useEffect, useState } from "react";
 
-export function useRandomUser(): [User[], () => void, boolean] {
+export function useFetchUser(page: number): [User[], boolean] {
   const [users, setUsers] = useState([] as User[]);
-  const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const loadMore = () => setPage(page + 1);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setLoading(true);
-    fetch(`https://randomuser.me/api?results=10&seed=uwu&page=${page}`)
+    fetch(`https://randomuser.me/api?results=9&seed=uwu&page=${page}`, {
+      //only fetch each page once
+      cache: "force-cache",
+    })
       .then((e) => e.json())
       .then((e: RandomUser) => {
+        e.results.forEach((e) => (e.searchString = genSearchString(e)));
+        setUsers(e.results);
         setLoading(false);
-        setUsers(users.concat(e.results));
       });
   }, [page]);
 
-  return [users, loadMore, loading];
+  return [users, loading];
+}
+
+//TODO better date strings
+function genSearchString(user: User) {
+  const { searchString, login, picture, ...notIgnored } = user; //eslint-disable-line @typescript-eslint/no-unused-vars
+  const test = Object.values(notIgnored)
+    .flatMap((e) => (typeof e === "object" ? Object.values(e || {}) : e))
+    .flatMap((e) => (typeof e === "object" ? Object.values(e || {}) : e));
+  return '"' + test.join('"') + '"';
+}
+
+export function nameFmt(name: Name) {
+  return name.title + " " + name.first + " " + name.last;
+}
+export function birthFmt(dob: Dob) {
+  return new Date(dob.date).toDateString();
 }
 
 interface RandomUser {
@@ -43,6 +62,7 @@ export interface User {
   login: Login;
   id: Id;
   registered: Dob;
+  searchString: string;
 }
 
 interface Picture {

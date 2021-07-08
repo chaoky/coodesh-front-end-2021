@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
+import { useRoute } from "./hooks/router";
 import PatientList from "./pages/PatientList";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
+  const route = useRoute();
+  //TODO add 404 page
   return (
-    <div>
-      <PatientList />
-    </div>
+    <div>{route.name == "userList" ? <PatientList route={route} /> : 404}</div>
   );
 }
-
-export default App;
