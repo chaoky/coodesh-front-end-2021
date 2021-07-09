@@ -2,7 +2,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Layout, Space, Typography } from "antd";
 import React, { ReactNode } from "react";
 
-import { colors } from "../../theme";
+import { colors } from "../theme";
 
 export default function PageLayout({ children }: { children: ReactNode }) {
   return (
