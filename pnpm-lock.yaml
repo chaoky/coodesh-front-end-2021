@@ -14,6 +14,7 @@ specifiers:
   eslint-plugin-prettier: ^3.3.1
   eslint-plugin-react: ^7.24.0
   eslint-plugin-simple-import-sort: ^7.0.0
+  husky: ^7.0.1
   prettier: ^2.2.1
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -42,6 +43,7 @@ devDependencies:
   eslint-plugin-prettier: 3.4.0_ae3805332b62cec006ed24a9ec35ea79
   eslint-plugin-react: 7.24.0
   eslint-plugin-simple-import-sort: 7.0.0
+  husky: 7.0.1
   prettier: 2.3.2
   react-scripts: 4.0.3_react@17.0.2+typescript@4.3.5
   typescript: 4.3.5
@@ -6264,6 +6266,12 @@ packages:
   /human-signals/1.1.1:
     resolution: {integrity: sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==}
     engines: {node: '>=8.12.0'}
+    dev: true
+
+  /husky/7.0.1:
+    resolution: {integrity: sha512-gceRaITVZ+cJH9sNHqx5tFwbzlLCVxtVZcusME8JYQ8Edy5mpGDOqD8QBCdMhpyo9a+JXddnujQ4rpY2Ff9SJA==}
+    engines: {node: '>=12'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
