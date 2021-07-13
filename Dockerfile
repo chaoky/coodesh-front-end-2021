@@ -1,10 +1,19 @@
-FROM node:latest
+FROM node:latest as bundler
 WORKDIR /app
 RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml .husky ./
 RUN pnpm install
-COPY src/ src/
-COPY index.html vite.config.ts tsconfig.json .eslintrc.yml ./
+COPY src src
+COPY public public
+COPY tsconfig.json .eslintrc.yml ./
 RUN pnpm run build
-EXPOSE 5000
-CMD ["pnpm", "run", "serve", "--", "--host"]
+
+# https://github.com/SirCremefresh/spa-server
+FROM donatowolfisberg/spa-server as builder
+COPY --from=bundler /app/build public
+RUN ./build.sh
+
+FROM scratch
+COPY --from=builder /app/server /server
+EXPOSE 8080
+CMD ["/server"]
