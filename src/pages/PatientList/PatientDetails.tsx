@@ -1,4 +1,5 @@
-import { Avatar, Descriptions, Modal, Tabs, Typography } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
+import { Avatar, Button, Descriptions, Tabs, Typography } from "antd";
 
 import { nameFmt, User } from "../../hooks/RandomUserHook";
 
@@ -53,16 +54,47 @@ export default function PatientDetails(props: {
   ];
 
   return (
-    <Modal
-      visible={true}
-      onCancel={props.onClose}
-      style={{ margin: 0, padding: 0, maxWidth: "100vw" }}
-      bodyStyle={{ minHeight: "100vh" }}
-      footer={false}
-      title={false}
-      centered
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 9999,
+        minHeight: "100vh",
+        minWidth: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflowX: "scroll",
+      }}
     >
-      <div>
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "2em",
+          boxShadow:
+            "0 3px 6px -4px #0000001f,0 6px 16px #00000014,0 9px 28px 8px #0000000d",
+          borderRadius: 2,
+        }}
+        className="modal-size"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            width: "100%",
+          }}
+        >
+          <Button
+            aria-label="close"
+            onClick={props.onClose}
+            style={{ color: "black" }}
+            size="large"
+            icon={<CloseOutlined />}
+            ghost
+          ></Button>
+        </div>
+
         <div
           style={{
             display: "flex",
@@ -88,6 +120,6 @@ export default function PatientDetails(props: {
           ))}
         </Tabs>
       </div>
-    </Modal>
+    </div>
   );
 }
