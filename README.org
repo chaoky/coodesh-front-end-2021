@@ -1,0 +1,28 @@
+* coodesh-front-end-2021
+Ultra Simple React + antd
+
+* Tools and Libraries
+- React
+- Ant Design
+- Type-route router
+- TypeScript
+- Create-react-app
+- Jest
+- Docker
+- Eslint
+- Husky
+- Prettire
+
+* Install
+** prod
+#+begin_src bash
+~ docker run -p 3000:8080 $(docker build -q .)
+#+end_src
+http://localhost:3000/
+
+** dev
+#+begin_src bash
+~ pnpm install
+~ pnpm start
+#+end_src
+http://localhost:3000/
