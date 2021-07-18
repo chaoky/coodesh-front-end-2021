@@ -38,7 +38,6 @@
     "test": "react-scripts test",
     "format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
     "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore",
-    "preinstall": "npx only-allow pnpm",
     "prepare": "husky install"
   },
   "eslintConfig": {
