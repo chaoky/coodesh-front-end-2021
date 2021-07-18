@@ -1,14 +1,34 @@
-import React from "react";
+import { lazy, Suspense, useMemo } from "react";
 
 import { RouteProvider, useRoute } from "./hooks/router";
-import PatientList from "./pages/PatientList/PatientList";
 
 export function Router() {
   const route = useRoute();
-  //TODO add 404 page
+  //TODO better 404 page
+  //TODO make first random user call here to avoid a second loading screen or use ssr
+  const PatientList = useMemo(
+    () => lazy(() => import("./pages/PatientList/PatientList")),
+    [route.name]
+  );
+
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       {route.name == "patientList" ? <PatientList route={route} /> : 404}
+    </Suspense>
+  );
+}
+
+function Loading() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      Loading...
     </div>
   );
 }
