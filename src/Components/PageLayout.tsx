@@ -1,4 +1,4 @@
-import { UserOutlined } from "@ant-design/icons";
+import { SmileOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Layout, Space, Typography } from "antd";
 import { ReactNode } from "react";
 
@@ -17,14 +17,22 @@ export default function PageLayout({ children }: { children: ReactNode }) {
           alignItems: "center",
         }}
       >
-        <Typography.Title level={4} style={{ margin: 0 }}>
-          Company
-        </Typography.Title>
-        <Avatar icon={<UserOutlined />} />
+        <Space>
+          <Avatar icon={<SmileOutlined />} size="large" />
+          <Typography.Title level={4} style={{ margin: 0 }}>
+            Company
+          </Typography.Title>
+        </Space>
+
+        <Avatar
+          style={{ justifySelf: "flex-end" }}
+          icon={<UserOutlined />}
+          size="large"
+        />
       </Layout.Header>
       <Layout.Content
         style={{
-          marginTop: 64,
+          marginTop: 64 + 32,
           padding: "24px 5vw",
           maxWidth: "1000px",
           width: "100vw",
@@ -32,11 +40,11 @@ export default function PageLayout({ children }: { children: ReactNode }) {
           backgroundColor: colors.backgroundColor,
         }}
       >
-        <Space size="large" direction="vertical" style={{ width: "100%" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
           {children}
-        </Space>
+        </div>
       </Layout.Content>
-      <Layout.Footer>Lordie and AntDesign</Layout.Footer>
+      <Layout.Footer>Coodesh Front-End Challenge 2021</Layout.Footer>
     </Layout>
   );
 }
