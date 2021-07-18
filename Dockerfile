@@ -5,7 +5,7 @@ COPY package.json pnpm-lock.yaml .husky ./
 RUN pnpm install
 COPY src src
 COPY public public
-COPY tsconfig.json .eslintrc.yml ./
+COPY tsconfig.json .eslintrc.yaml craco.config.js ./
 RUN pnpm run build
 
 # https://github.com/SirCremefresh/spa-server
