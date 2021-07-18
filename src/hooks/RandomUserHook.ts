@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
 
 export function useFetchUser(
-  page: number
-): [Readonly<User[]>, Readonly<boolean>] {
-  const [users, setUsers] = useState([] as User[]);
+  page = 1
+): [Readonly<UserPages>, Readonly<boolean>] {
+  const [users, setUsers] = useState({} as UserPages);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    const fiber = makeCancelable(
-      fetch(`https://randomuser.me/api?results=9&seed=uwu&page=${page}`, {
-        cache: "force-cache",
-      })
-    );
+    if (!users[page]) {
+      setLoading(true);
+      const fiber = makeCancelable(
+        fetch(`https://randomuser.me/api?results=50&seed=uwu&page=${page}`, {
+          cache: "force-cache",
+        })
+      );
 
-    fiber.promise
-      .then((e) => e.json())
-      .then((e: RandomUser) => {
-        e.results.forEach((e) => (e.searchString = genSearchString(e)));
-        setUsers(e.results);
-        setLoading(false);
-      })
-      .catch(({ isCanceled }) => console.log("isCanceled", isCanceled));
-    return () => {
-      fiber.cancel();
-    };
+      fiber.promise
+        .then((e) => e.json())
+        .then((e: RandomUser) => {
+          e.results.forEach((e) => (e.searchString = genSearchString(e)));
+          setUsers({ ...users, [page]: e.results });
+          setLoading(false);
+        })
+        .catch(({ isCanceled }) => console.log("isCanceled", isCanceled));
+
+      return () => {
+        fiber.cancel();
+      };
+    }
   }, [page]);
 
   return [users, loading];
@@ -61,7 +64,11 @@ export function nameFmt(name: Name) {
   return name.title + " " + name.first + " " + name.last;
 }
 export function birthFmt(dob: Dob) {
-  return new Date(dob.date).toDateString();
+  return new Date(dob.date).toLocaleDateString();
+}
+
+interface UserPages {
+  [page: number]: User[];
 }
 
 interface RandomUser {
