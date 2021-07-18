@@ -1,28 +1,34 @@
 * coodesh-front-end-2021
-Ultra Simple React + antd
+Simple Antd + React project for the [[file:./instructions.md][coodesh 2021 front end challenge]]
+[[https://coodesh-front-end-2021.lordie.moe]]
+
+- loadmore button integrated into pagination.
+- universal search instead of name search in main search bar.
+- since ~random user api~ doesn't support filtering or sorting, there was no right way of impleting this, the functionallity is there but is awkward to use
 
 * Tools and Libraries
 - React
 - Ant Design
 - Type-route router
 - TypeScript
-- Create-react-app
+- Create-react-app (craco)
 - Jest
 - Docker
 - Eslint
 - Husky
-- Prettire
+- Prettier
+- Emotion
 
-* Install
+* Running
 ** prod
 #+begin_src bash
-~ docker run -p 3000:8080 $(docker build -q .)
+~ docker-compose up
 #+end_src
-http://localhost:3000/
+[[http://localhost:3000/]]
 
 ** dev
 #+begin_src bash
 ~ pnpm install
 ~ pnpm start
 #+end_src
-http://localhost:3000/
+[[http://localhost:3000/]]
