@@ -1,15 +1,16 @@
-* coodesh-front-end-2021
+* coodesh front end 2021
 Simple Antd + React project for the [[file:./instructions.md][coodesh 2021 front end challenge]]
-[[https://coodesh-front-end-2021.lordie.moe]]
 
 - loadmore button integrated into pagination.
 - universal search instead of name search in main search bar.
-- since ~random user api~ doesn't support filtering or sorting, there was no right way of impleting this, the functionallity is there but is awkward to use
+- since ~random user api~ doesn't support filtering or sorting, this functionality is very awkward to use
+
+** [[https://coodesh-front-end-2021.lordie.moe]]
 
 * Tools and Libraries
 - React
 - Ant Design
-- Type-route router
+- Type-route (routing)
 - TypeScript
 - Create-react-app (craco)
 - Jest
