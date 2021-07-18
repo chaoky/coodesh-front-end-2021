@@ -2,8 +2,6 @@ import { SmileOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Layout, Space, Typography } from "antd";
 import { ReactNode } from "react";
 
-import { colors } from "../theme";
-
 export default function PageLayout({ children }: { children: ReactNode }) {
   return (
     <Layout style={{ alignItems: "center" }}>
@@ -37,7 +35,6 @@ export default function PageLayout({ children }: { children: ReactNode }) {
           maxWidth: "1000px",
           width: "100vw",
           minHeight: "100vh",
-          backgroundColor: colors.backgroundColor,
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
