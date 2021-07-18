@@ -5,7 +5,7 @@ Simple Antd + React project for the [[file:./instructions.md][coodesh 2021 front
 - universal search instead of name search in main search bar.
 - since ~random user api~ doesn't support filtering or sorting, this functionality is very awkward to use
 
-** [[https://coodesh-front-end-2021.lordie.moe]]
+** [[https://coodeshfrontend2021.lordie.moe]]
 
 * Tools and Libraries
 - React
